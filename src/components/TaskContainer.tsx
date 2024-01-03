@@ -15,7 +15,8 @@ const TaskContainer = ({
   indexOfLastTask,
   setCurrentPage,
   clearTasksCompleted,
-  filteredTasks
+  filteredTasks,
+  handleEditTaks
 }: TaskContainerProps) => {
   return (
     <ul className="absolute top-[35%] w-2/5">
@@ -26,6 +27,7 @@ const TaskContainer = ({
             index={index}
             handleTaskIsComplete={handleTaskIsComplete}
             handleDeleteTask={handleDeleteTask}
+            handleEditTaks={handleEditTaks}
           />
         ))}
       {filterActive === "active" &&
@@ -35,6 +37,7 @@ const TaskContainer = ({
             index={index}
             handleTaskIsComplete={handleTaskIsComplete}
             handleDeleteTask={handleDeleteTask}
+            handleEditTaks={handleEditTaks}
           />
         ))}
       {filterActive === "completed" &&
@@ -44,6 +47,7 @@ const TaskContainer = ({
             index={index}
             handleTaskIsComplete={handleTaskIsComplete}
             handleDeleteTask={handleDeleteTask}
+            handleEditTaks={handleEditTaks}
           />
         ))}
       <Filters

@@ -8,6 +8,7 @@ const useTaskFunctions = () => {
   const [filterActive, setFilterActive] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [taskEdit, setTaskEdit] = useState<Task | null>();
   const tasksPerPage = 4;
 
   interface Task {
@@ -44,9 +45,38 @@ const useTaskFunctions = () => {
     }
   };
 
+  const handleEditTaks = (taskId: number) => {
+    const task: Task | undefined = tasks.find((task) => {
+      return task.id === taskId;
+    });
+    if (!task) return;
+    inputValue.current!.value = task.title;
+    setTaskEdit(task);
+  };
+
+  const updateTask = ({ id, isCompleted }: Task) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === id
+        ? {
+            ...task,
+            title: inputValue.current!.value,
+            isCompleted,
+          }
+        : task
+    );
+
+    setTasks(updatedTasks);
+    inputValue.current!.value = "";
+    setTaskEdit(null);
+  };
+
   const handleClickEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
+      if (taskEdit) {
+        console.log("Entrei");
+        return updateTask(taskEdit);
+      }
       handleAddTask();
     } else {
       setInputError(false);
@@ -55,8 +85,8 @@ const useTaskFunctions = () => {
 
   const handleAddTask = useCallback(() => {
     setInputError(false);
+    if (taskEdit) return;
     const inputConfirmed = (inputValue.current?.value ?? "").trim().length > 0;
-
     if (inputConfirmed === false) {
       return setInputError(true);
     }
@@ -70,7 +100,7 @@ const useTaskFunctions = () => {
     setTasks((prevTasks) => [...prevTasks, newTask]);
     inputValue.current?.focus();
     inputValue.current!.value = "";
-  }, [tasks, inputValue, setTasks, setInputError]);
+  }, [taskEdit, tasks.length]);
 
   const clearTasksCompleted = () => {
     const clearedTasks = tasks.filter((task) => !task.isCompleted);
@@ -122,6 +152,7 @@ const useTaskFunctions = () => {
     handleTaskIsComplete,
     handleDeleteTask,
     handleClickEnter,
+    handleEditTaks,
     clearTasksCompleted,
     indexOfLastTask,
     filteredTasks,

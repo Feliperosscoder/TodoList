@@ -22,6 +22,7 @@ function App() {
     clearTasksCompleted,
     filteredTasks,
     currentTasks,
+    handleEditTaks
   } = useTaskFunctions();
   
   console.log(currentPage);
@@ -60,6 +61,7 @@ function App() {
           setFilterActive={setFilterActive}
           clearTasksCompleted={clearTasksCompleted}
           setCurrentPage={setCurrentPage}
+          handleEditTaks={handleEditTaks}
         />
       </div>
     </div>

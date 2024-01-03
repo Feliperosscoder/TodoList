@@ -17,6 +17,7 @@ export interface TaskContainerProps {
   setFilterActive: (filter: string) => void;
   clearTasksCompleted: () => void;
   setCurrentPage: (page: number) => void;
+  handleEditTaks: (taskId: number) => void
 }
 
 export interface PagesButtonsProps {
@@ -33,4 +34,5 @@ export interface TaskComponentProps {
   index: number;
   handleTaskIsComplete: (taskId: number) => void;
   handleDeleteTask: (taskId: number) => void;
+  handleEditTaks: (taskId: number) => void
 }

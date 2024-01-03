@@ -1,6 +1,7 @@
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import ClearIcon from "@mui/icons-material/Clear";
+import EditIcon from '@mui/icons-material/Edit';
 
 import { TaskComponentProps } from "./types";
 
@@ -9,6 +10,7 @@ const TaskComponent = ({
   index,
   handleTaskIsComplete,
   handleDeleteTask,
+  handleEditTaks
 }: TaskComponentProps) => {
   const handleComplete = () => {
     handleTaskIsComplete(task.id);
@@ -17,6 +19,10 @@ const TaskComponent = ({
   const handleDelete = () => {
     handleDeleteTask(task.id);
   };
+
+  const handleEdition = () => {
+    handleEditTaks(task.id)
+  }
   console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa".length);
 
 
@@ -54,7 +60,8 @@ const TaskComponent = ({
           {task.title.length > maxLength ? `${task.title.slice(0, maxLength)}...` : task.title}
         </span>
       </div>
-      <span className="flex items-center text-xl text-[#421D8F] cursor-pointer">
+      <span className="flex items-center text-xl text-[#421D8F] cursor-pointer gap-6">
+        <EditIcon onClick={handleEdition}  className="scale-150"/>
         <ClearIcon onClick={handleDelete} className="scale-150" />
       </span>
     </li>
