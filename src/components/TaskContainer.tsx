@@ -19,7 +19,7 @@ const TaskContainer = ({
   handleEditTaks
 }: TaskContainerProps) => {
   return (
-    <ul className="absolute top-[35%] w-2/5">
+    <ul className="absolute top-[35%] w-4/5 lg:w-3/5 2xl:w-2/5">
       {filterActive === "all" &&
         currentTasks.map((task, index) => (
           <TaskComponent

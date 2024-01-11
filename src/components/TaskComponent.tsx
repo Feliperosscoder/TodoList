@@ -4,6 +4,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import EditIcon from '@mui/icons-material/Edit';
 
 import { TaskComponentProps } from "./types";
+import { useEffect, useState } from "react";
 
 const TaskComponent = ({
   task,
@@ -24,8 +25,35 @@ const TaskComponent = ({
     handleEditTaks(task.id)
   }
 
+  const [maxLength, setMaxLength] = useState(40);
 
-  const maxLength: number = 40
+  useEffect(() => {
+    
+    const updateMaxLength = () => {
+      if (window.innerWidth < 640) //sm
+        setMaxLength(15)
+      else if (window.innerWidth < 768) //md
+        setMaxLength(20)
+      else if (window.innerWidth < 1024) //lg
+        setMaxLength(25)
+      else if (window.innerWidth < 1180) //lg+
+        setMaxLength(30)
+      else if (window.innerWidth < 1280) //xl
+        setMaxLength(40)
+      else 
+        setMaxLength(40); //xl+
+      
+    };
+
+    window.addEventListener('resize', updateMaxLength);
+
+    updateMaxLength();
+
+    return () => {
+      window.removeEventListener('resize', updateMaxLength);
+    };
+  }, []);
+
   
   return (
     <li
@@ -52,7 +80,11 @@ const TaskComponent = ({
               ? "text-xl text-[#8d8d96] line-through"
               : "text-xl text-[#E4E5F1]"
           }`}
-          style={{ maxWidth: `${maxLength}ch`, overflow: "hidden", textOverflow: "ellipsis" }}
+          style={{
+            maxWidth: `${maxLength}ch`,
+            overflow: "hidden",
+            textOverflow: "ellipsis"
+          }}
           title={task.title}
         >
           

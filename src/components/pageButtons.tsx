@@ -19,7 +19,7 @@ const PagesButtons = ({
             onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 1}
             className={
-              filteredTasks.length > 4 && currentPage > 1 ? "text-[#E4E5F1]" : "invisible"
+              filteredTasks.length > 4 && currentPage > 1 ? "text-[#1F1F1F] md:text-[#E4E5F1]" : "invisible"
             }
           >
             <NavigateBeforeIcon />
@@ -29,7 +29,7 @@ const PagesButtons = ({
             disabled={indexOfLastTask >= tasks.length}
             className={
               filteredTasks.length > 4 && indexOfLastTask < filteredTasks.length
-                ? "text-[#E4E5F1]"
+                ? "text-[#1F1F1F] md:text-[#E4E5F1]"
                 : "invisible"
             }
           >

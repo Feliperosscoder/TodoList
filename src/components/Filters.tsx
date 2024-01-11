@@ -16,16 +16,16 @@ const Filters = ({
   return (
     <div>
       {tasks.length > 0 && (
-        <div className="bg-[#25273C] text-[#515267] border-t border-[#585870] rounded-b-lg grid grid-cols-3 py-[1.9rem] px-[2rem]">
-          <p className="">
+        <div className="flex flex-col items-center md:grid md:grid-cols-3 gap-10 bg-[#25273C] text-[#515267] border-t border-[#585870] rounded-b-lg  py-[1.9rem] px-[2rem]">
+          <p className="hidden md:block">
             <span>{tasks.length}</span> tasks
           </p>
-          <div className="flex justify-between font-bold">
+          <div className="flex flex-col items-center md:flex-row 2xl:flex-row justify-between gap-10 font-bold">
             <button
               className={`${
                 filterActive !== "all"
-                  ? "hover:text-[#fafafa] transition-all duration-150"
-                  : "text-[#5855ff] scale-110"
+                  ? "hover:text-[#fafafa] transition-all duration-150 "
+                  : "text-[#5855ff] scale-110 border-y border-[#585870] py-2 px-2 md:border-none"
               }`}
               onClick={() => setFilterActive("all")}
             >
@@ -34,8 +34,8 @@ const Filters = ({
             <button
               className={`${
                 filterActive !== "active"
-                  ? "hover:text-[#fafafa] transition-all duration-150"
-                  : "text-[#5855ff] scale-110"
+                  ? "hover:text-[#fafafa] transition-all duration-150 "
+                  : "text-[#5855ff] scale-110 border-y border-[#585870] py-2 px-2 md:border-none"
               }`}
               onClick={() => setFilterActive("active")}
             >
@@ -44,8 +44,8 @@ const Filters = ({
             <button
               className={`${
                 filterActive !== "completed"
-                  ? "hover:text-[#fafafa] transition-all duration-150"
-                  : "text-[#5855ff] scale-110"
+                  ? "hover:text-[#fafafa] transition-all duration-150 "
+                  : "text-[#5855ff] scale-110 border-y border-[#585870] py-2 px-2 md:border-none"
               }`}
               onClick={() => setFilterActive("completed")}
             >
