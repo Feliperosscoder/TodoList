@@ -16,7 +16,7 @@ const Filters = ({
   return (
     <div>
       {tasks.length > 0 && (
-        <div className="bg-[#25273C] text-[#515267] border-t-[1px] border-[#585870] rounded-b-lg grid grid-cols-3 py-[1.9rem] px-[2rem]">
+        <div className="bg-[#25273C] text-[#515267] border-t border-[#585870] rounded-b-lg grid grid-cols-3 py-[1.9rem] px-[2rem]">
           <p className="">
             <span>{tasks.length}</span> tasks
           </p>

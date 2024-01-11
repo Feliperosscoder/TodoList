@@ -39,8 +39,6 @@ const useTaskFunctions = () => {
       if (tasks.length - 1 === 4) {
         return setCurrentPage(1);
       }
-      console.log("AAAAAAAAA");
-
       setCurrentPage(() => currentPage - 1);
     }
   };
@@ -74,7 +72,6 @@ const useTaskFunctions = () => {
     if (e.key === "Enter") {
       e.preventDefault();
       if (taskEdit) {
-        console.log("Entrei");
         return updateTask(taskEdit);
       }
       handleAddTask();

@@ -23,7 +23,6 @@ const TaskComponent = ({
   const handleEdition = () => {
     handleEditTaks(task.id)
   }
-  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa".length);
 
 
   const maxLength: number = 40
